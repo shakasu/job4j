@@ -2,8 +2,8 @@ package ru.job4j.calculator;
 
 public class Fit {
     public static double manWeight(double height) {
-        double perfectManFit = 1.15*(height-100);
-        return perfectManFit;
+        double perfectManFit1 = 1.15*(height-100);
+        return perfectManFit1;
     }
     public static double womanWeight(double height) {
         double perfectWomanFit = 1.15*(height-110);
