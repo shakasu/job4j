@@ -32,5 +32,14 @@ public class SqMaxTest {
         SqMax check = new SqMax();
         int result = check.max(1, 2, 3, 4);
         assertThat(result, is(4));
+
+    }
+
+    @Test
+    public void whenThirdMaxDuble() {
+        SqMax check = new SqMax();
+        int result = check.max(4, 2, 8, 1);
+        assertThat(result, is(8));
+
     }
 }
