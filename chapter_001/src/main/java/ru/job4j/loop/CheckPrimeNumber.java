@@ -7,9 +7,12 @@ public class CheckPrimeNumber {
         }
         boolean prime = false;
         int filter = 0;
-        for(int index=1;index<(finish+1);index ++){
+        for(int index=1;index<=finish;index ++){
             if ((finish%index)==0){
                filter++;
+            }
+            if (filter>2) {
+                break;
             }
         }
         prime= filter==2? true:false;
