@@ -5,17 +5,17 @@ public class CheckPrimeNumber {
         if (finish == 0){
             return false;
         }
-        boolean prime = false;
+        boolean prime = true;
         int filter = 0;
         for(int index=1;index<=finish;index ++){
             if ((finish%index)==0){
                filter++;
             }
             if (filter>2) {
+                prime = false;
                 break;
             }
         }
-        prime= filter==2? true:false;
         return prime;
     }
 }
