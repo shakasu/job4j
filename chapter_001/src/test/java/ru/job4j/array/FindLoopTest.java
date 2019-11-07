@@ -38,4 +38,16 @@ public class FindLoopTest {
         assertThat(result, is(expect));
     }
 
+    @Test
+    public void whenArrayHas55ThenNot() {
+        FindLoop find = new FindLoop();
+        int[] input = new int[] {
+                1, 5, 6, 22, 25, 0, 3, 33, 7, 65
+        };
+        int value = 55;
+        int result = find.indexOf(input, value);
+        int expect = -1;
+        assertThat(result, is(expect));
+    }
+
 }
