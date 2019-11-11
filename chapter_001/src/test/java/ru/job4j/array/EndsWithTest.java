@@ -22,4 +22,20 @@ public class EndsWithTest {
         boolean result = EndsWith.endsWith(word, post);
         assertThat(result, is(false));
     }
+
+    @Test
+    public void whenNotStartWithPrefixThenFalseTwo() {
+        char[] word = {'G', 'i', 't', 'h', 'u', 'b'};
+        char[] post = {'l', 'a'};
+        boolean result = EndsWith.endsWith(word, post);
+        assertThat(result, is(false));
+    }
+
+    @Test
+    public void whenStartWithPrefixThenTrueTwo() {
+        char[] word = {'G', 'i', 't', 'h', 'u', 'b'};
+        char[] post = {'t', 'h', 'u', 'b'};
+        boolean result = EndsWith.endsWith(word, post);
+        assertThat(result, is(true));
+    }
 }

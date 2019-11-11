@@ -6,9 +6,7 @@ public class EndsWith {
         char[] returnPost = turner.back(post);
         char[] returnWord = turner.back(word);
         ArrayChar checker = new ArrayChar();
-        boolean result =ArrayChar.startsWith(word, post);
-        // проверить. что массив word имеет последние элементы одинаковые с post
-
+        boolean result = ArrayChar.startsWith(word, post);
         return result;
     }
 }
