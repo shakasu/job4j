@@ -6,11 +6,11 @@ public class Defragment {
         for (int index = 0; index < array.length; index++) {
             String cell = array[index];
             if (cell == null) {
-                while (array[i]==null) {
+                while (array[i] == null) {
                     i++;
                 }
                 array[index] = array[i];
-                array[i]=null;
+                array[i] = null;
             }
             System.out.print(array[index] + " ");
             if (array[0] != null) {

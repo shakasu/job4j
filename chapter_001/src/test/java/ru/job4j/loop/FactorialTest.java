@@ -25,11 +25,11 @@ public class FactorialTest {
     }
 
     @Test
-    public void factFive(){
+    public void factFive() {
         Factorial factorial = new Factorial();
         int in = 5;
         int expected = 120;
         int out = Factorial.calc(in);
-        Assert.assertEquals(expected,out);
+        Assert.assertEquals(expected, out);
     }
 }
