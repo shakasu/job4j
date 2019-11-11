@@ -2,24 +2,33 @@ package ru.job4j.array;
 
 public class MatrixCheck {
     public static boolean isWin(char[][] board) {
-        boolean cellS, rowS;
+        boolean result = false;
         for (int row = 0; row < board.length; row++) {
-            cellS = true;
-            rowS = true;
-            for (int cell = 0; cell < board.length; cell++) {
-                char sign = board[row][cell];
-                System.out.print(sign);
-                //cellS = (board[cell][row] == 'X') ? true : false;
-                //rowS = (board[row][cell] == 'X') ? true : false;
-                cellS &= (board[cell][row] == 'X'); // тернарные операции не работают
-                rowS &= (board[row][cell] == 'X');
-            }
-            System.out.println();
-            if (cellS||rowS) {
-                return true;
+            int cellS = 0;
+            for (int i = 0; i < board.length; i++) {
+                if (board[row][i] == 'X') {
+                    cellS++;
+                }
+                if (cellS == board.length) {
+                    return true;
+                }
+                for (int cell = 0; cell < board.length; cell++) {
+                    int rowS = 0;
+                    for (int n = 0; n < board.length; n++) {
+                        if (board[n][cell] == 'X') {
+                            rowS++;
+                        }
+                        if (rowS == board.length) {
+                            return true;
+                        }
+                        char sign = board[row][cell];
+                        System.out.print(sign);
+                    }
+                }
+                System.out.println();
             }
         }
-        return false;
+        return result;
     }
 
     public static void main(String[] args) {
