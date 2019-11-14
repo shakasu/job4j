@@ -31,27 +31,15 @@ public class Merge {
         ind++;
         }
 
-        for (int tmpInd = 0; tmpInd < rsl.length; tmpInd++) {
-            int[] tmp = new int[rsl.length];
-            if (riInd == right.length) {
-                tmp = left;
-                if (tmpInd == 0) {
-                    tmpInd = leInd;
-                }
-            }
-            if (leInd == left.length) {
-                tmp = right;
-                if (tmpInd == 0) {
-                    tmpInd = riInd;
-                }
-            }
-            rsl[ind] = tmp[tmpInd];
+        int[] tmp = (riInd == right.length) ? left : right;
+        int tmpInd = (riInd == right.length) ? leInd : riInd;
+        for (int i = tmpInd; i < rsl.length; i++) {
+            rsl[ind] = tmp[i];
             ind++;
             if (ind == rsl.length) {
                 break;
             }
         }
-
         return rsl;
     }
 
