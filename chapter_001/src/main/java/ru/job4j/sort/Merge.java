@@ -33,12 +33,9 @@ public class Merge {
 
         int[] tmp = (riInd == right.length) ? left : right;
         int tmpInd = (riInd == right.length) ? leInd : riInd;
-        for (int i = tmpInd; i < rsl.length; i++) {
+        for (int i = tmpInd; (i < rsl.length) && (ind != rsl.length); i++) {
             rsl[ind] = tmp[i];
             ind++;
-            if (ind == rsl.length) {
-                break;
-            }
         }
         return rsl;
     }
