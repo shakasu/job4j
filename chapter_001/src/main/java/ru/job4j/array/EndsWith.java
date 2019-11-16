@@ -3,7 +3,7 @@ package ru.job4j.array;
 /**
  * A class for checking char-type "word" arrays for the end of a "post".
  *
- * @author Karen Shakhnazaryan (shakasuone@gmail.com)
+ * @author Karen Shakhnazaryan (shakasuone@gmail.com).
  *
  */
 public class EndsWith {
