@@ -22,6 +22,6 @@ public class EndsWith {
             }
             indexPost--;
         }
-        return indexPost == -1 ? true : false;
+        return indexPost == -1;
     }
 }
