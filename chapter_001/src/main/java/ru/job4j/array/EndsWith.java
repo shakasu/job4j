@@ -14,14 +14,13 @@ public class EndsWith {
      * @return - truth of check.
      */
     public static boolean endsWith(char[] word, char[] post) {
-        int indexDifference = word.length - post.length - 1;
-        int indexPost = post.length - 1;
-        for (int indexWord = word.length - 1; indexWord > indexDifference; indexWord--) {
-            if (word[indexWord] != post[indexPost]) {
+        boolean result = true;
+        for (int i = 0; i < post.length; i++) {
+            if (word[word.length - i - 1] != post[post.length - i - 1]) {
+                result = false;
                 break;
             }
-            indexPost--;
         }
-        return indexPost == -1;
+        return result;
     }
 }
