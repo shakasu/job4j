@@ -4,11 +4,10 @@ public class Shop {
 
     public Product[] delete(Product[] products, int index) {
         products[index] = null;
-        for (int i = index + 1; i < products.length; i++) {
-            Product tmp = products[i];
-            products[i] = null;
-            products[i - 1] = tmp;
+        for (int i = index; i < products.length - 1; i++) {
+          products[i] = products[i + 1];
         }
+        products[products.length - 1] = null;
 
         return products;
     }
