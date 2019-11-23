@@ -37,6 +37,7 @@ public class Tracker {
                 result = true;
                 newItem.setId(items[i].getId());
                 items[i] = newItem;
+                newItem = null;
                 break;
             }
         }
