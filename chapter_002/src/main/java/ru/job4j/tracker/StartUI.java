@@ -49,7 +49,7 @@ public class StartUI {
     }
     public static  void findByName(Input input, Tracker tracker) {
         System.out.println("=== Find item by name ====");
-        for (Item item : tracker.findByName( input.askStr("Enter the name of the item to search for."))) {
+        for (Item item : tracker.findByName(input.askStr("Enter the name of the item to search for."))) {
             if (item != null) {
                 System.out.println(item.getName() + " - " + item.getId());
             }

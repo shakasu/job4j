@@ -15,14 +15,14 @@ public class Matches {
         System.out.println("Второй игрок введи имя.");
         String name2 = input.nextLine();
         while (items != 0) {
-            String name = step? name1 : name2;
+            String name = step ? name1 : name2;
             System.out.println(name + ", бери спички");
             int select = Integer.valueOf(input.nextLine());
             items = items - select;
             System.out.println("На столе " + items + " спичек.");
             step = !step;
         }
-        String name = !step? name1 : name2;
+        String name = !step ? name1 : name2;
         System.out.println("Поздравляю, " + name + ", ты забрал последие спички!");
     }
 }
