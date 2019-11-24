@@ -20,33 +20,32 @@ public class StartUI {
     public static  void editItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ====");
         String idItem =  input.askStr("Enter the Id of the old item");
-        while (tracker.findById(idItem) == null) {
-            idItem =  input.askStr("Id not found, please, try again. Your Id is?");
-        }
         System.out.println("Enter the name of the new item");
         String newItemName =  input.askStr("");
         Item newItem = new Item(newItemName);
-        tracker.replace(idItem, newItem);
+        if (tracker.replace(idItem, newItem)) {
         System.out.println("Editing successfully done");
+        } else {
+            System.out.println("Item not found");
+        }
     }
     public static  void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ====");
         String idItem =  input.askStr("Enter the Id of the item to delete.");
-        while (tracker.findById(idItem) == null) {
-            idItem =  input.askStr("Id not found, please, try again. Your Id is?");
-        }
         if (tracker.delete(idItem)) {
-            tracker.delete(idItem);
             System.out.println("Item deleted successfully");
+        } else {
+            System.out.println("Item not found");
         }
     }
     public static  void findById(Input input, Tracker tracker) {
         System.out.println("=== Find item by Id ====");
         String idItem =  input.askStr("Enter the Id of the item to search for.");
-        while (tracker.findById(idItem) == null) {
-            idItem =  input.askStr("Id not found, please, try again. Your Id is?");
+        if (tracker.findById(idItem) != null) {
+            System.out.println(tracker.findById(idItem).getName() + " is required element.");
+        } else {
+            System.out.println("Item not found");
         }
-        System.out.println(tracker.findById(idItem).getName() + " is required element.");
     }
     public static  void findByName(Input input, Tracker tracker) {
         System.out.println("=== Find item by name ====");
