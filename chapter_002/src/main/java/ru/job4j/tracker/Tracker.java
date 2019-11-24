@@ -32,7 +32,7 @@ public class Tracker {
      */
     public boolean replace(String id, Item newItem) {
         boolean result = false;
-        for (int i = 0; i <= position; i++) {
+        for (int i = 0; i < position; i++) {
             if (items[i] != null && items[i].getId().equals(id)) {
                 result = true;
                 newItem.setId(items[i].getId());
@@ -59,14 +59,15 @@ public class Tracker {
     public  boolean delete(String id) {
         boolean result = false;
         int delIndex = 0;
-        for (int i = 0; i <= position; i++) {
+        for (int i = 0; i < position; i++) {
             delIndex++;
             if (items[i] != null && items[i].getId().equals(id)) {
                 result = true;
+                System.arraycopy(items, delIndex, items, delIndex - 1, position + 1 - delIndex);
+                position--;
                 break;
             }
         }
-        System.arraycopy(items, delIndex, items, delIndex - 1, position + 1 - delIndex);
         return result;
     }
 
@@ -85,13 +86,13 @@ public class Tracker {
      */
     public  Item[] findByName(String key) {
         Item[] result = new Item[position];
-        int i = 0;
-        for (Item item : items) {
-            if (item != null && item.getName().equals(key)) {
-                result[i++] = item;
+        int findIndex = 0;
+        for (int i = 0; i < position; i++) {
+            if (items[i] != null && items[i].getName().equals(key)) {
+                result[findIndex++] = items[i];
             }
         }
-        return Arrays.copyOf(result, i);
+        return Arrays.copyOf(result, findIndex);
     }
 
     /**
@@ -101,7 +102,7 @@ public class Tracker {
      */
     public  Item findById(String id) {
         Item result = null;
-        for (int i = 0; i <= position; i++) {
+        for (int i = 0; i < position; i++) {
             if (items[i] != null && items[i].getId().equals(id)) {
                 result = items[i];
                 break;

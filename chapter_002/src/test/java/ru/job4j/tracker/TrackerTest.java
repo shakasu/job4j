@@ -79,8 +79,8 @@ public class TrackerTest {
         tracker.add(test2);
         Item test3 = new Item("test3");
         tracker.add(test3);
-        tracker.delete(test2.getId());
         boolean result = tracker.delete(test2.getId());
+        tracker.delete(test2.getId());
         //так как мы ожидаем логическую переменную и уменьшения количества
         // ненулевых элементов, то сравним еще длину массива от метода findAll
         boolean expected = tracker.findAll().length == 2;
