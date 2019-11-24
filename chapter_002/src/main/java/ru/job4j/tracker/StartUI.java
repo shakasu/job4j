@@ -3,8 +3,7 @@ package ru.job4j.tracker;
 public class StartUI {
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
-        System.out.print("Enter name: ");
-        String name =  input.askStr("");
+        String name =  input.askStr("Enter name: ");
         Item item = new Item(name);
         tracker.add(item);
         System.out.println("Adding item was successful.");
@@ -20,11 +19,9 @@ public class StartUI {
     }
     public static  void editItem(Input input, Tracker tracker) {
         System.out.println("=== Edit item ====");
-        System.out.println("Enter the Id of the old item");
-        String idItem =  input.askStr("");
+        String idItem =  input.askStr("Enter the Id of the old item");
         while (tracker.findById(idItem) == null) {
-            System.out.println("Id not found, please, try again. Your Id is?");
-            idItem =  input.askStr("");
+            idItem =  input.askStr("Id not found, please, try again. Your Id is?");
         }
         System.out.println("Enter the name of the new item");
         String newItemName =  input.askStr("");
@@ -34,11 +31,9 @@ public class StartUI {
     }
     public static  void deleteItem(Input input, Tracker tracker) {
         System.out.println("=== Delete item ====");
-        System.out.println("Enter the Id of the item to delete.");
-        String idItem =  input.askStr("");
+        String idItem =  input.askStr("Enter the Id of the item to delete.");
         while (tracker.findById(idItem) == null) {
-            System.out.println("Id not found, please, try again. Your Id is?");
-            idItem =  input.askStr("");
+            idItem =  input.askStr("Id not found, please, try again. Your Id is?");
         }
         if (tracker.delete(idItem)) {
             tracker.delete(idItem);
@@ -47,18 +42,15 @@ public class StartUI {
     }
     public static  void findById(Input input, Tracker tracker) {
         System.out.println("=== Find item by Id ====");
-        System.out.println("Enter the Id of the item to search for.");
-        String idItem =  input.askStr("");
+        String idItem =  input.askStr("Enter the Id of the item to search for.");
         while (tracker.findById(idItem) == null) {
-            System.out.println("Id not found, please, try again. Your Id is?");
-            idItem =  input.askStr("");
+            idItem =  input.askStr("Id not found, please, try again. Your Id is?");
         }
         System.out.println(tracker.findById(idItem).getName() + " is required element.");
     }
     public static  void findByName(Input input, Tracker tracker) {
         System.out.println("=== Find item by name ====");
-        System.out.println("Enter the name of the item to search for.");
-        for (Item item : tracker.findByName( input.askStr(""))) {
+        for (Item item : tracker.findByName( input.askStr("Enter the name of the item to search for."))) {
             if (item != null) {
                 System.out.println(item.getName() + " - " + item.getId());
             }
@@ -69,8 +61,7 @@ public class StartUI {
         boolean run = true;
         while (run) {
             this.showMenu();
-            System.out.print("Select: ");
-            int select = Integer.parseInt(input.askStr(""));
+            int select = Integer.parseInt(input.askStr("Select: "));
             if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
