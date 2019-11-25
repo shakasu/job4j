@@ -41,11 +41,7 @@ public class StartUI {
     public static  void findById(Input input, Tracker tracker) {
         System.out.println("=== Find item by Id ====");
         String idItem =  input.askStr("Enter the Id of the item to search for.");
-        if (tracker.findById(idItem) != null) {
-            System.out.println(tracker.findById(idItem).getName() + " is required element.");
-        } else {
-            System.out.println("Item not found");
-        }
+        System.out.println(tracker.findById(idItem).getName() + " is required element.");
     }
     public static  void findByName(Input input, Tracker tracker) {
         System.out.println("=== Find item by name ====");
