@@ -57,19 +57,23 @@ public class StartUI {
         while (run) {
             this.showMenu();
             int select = Integer.parseInt(input.askStr("Select: "));
-            if (select == 0) {
+            final boolean[] IS_IT = new boolean[7];
+            for (int i = 0; i < IS_IT.length; i++) {
+                IS_IT[i] = select == i;
+            }
+            if (IS_IT[0]) {
                 StartUI.createItem(input, tracker);
-            } else if (select == 1) {
+            } else if (IS_IT[1]) {
                 StartUI.showAll(input, tracker);
-            } else if (select == 2) {
+            } else if (IS_IT[2]) {
                 StartUI.editItem(input, tracker);
-            } else if (select == 3) {
+            } else if (IS_IT[3]) {
                 StartUI.deleteItem(input, tracker);
-            } else if (select == 4) {
+            } else if (IS_IT[4]) {
                 StartUI.findById(input, tracker);
-            } else if (select == 5) {
+            } else if (IS_IT[5]) {
                 StartUI.findByName(input, tracker);
-            } else if (select == 6) {
+            } else if (IS_IT[6]) {
                 run = false;
             }
         }
