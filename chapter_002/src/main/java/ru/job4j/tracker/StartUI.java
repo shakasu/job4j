@@ -41,7 +41,12 @@ public class StartUI {
     public static  void findById(Input input, Tracker tracker) {
         System.out.println("=== Find item by Id ====");
         String idItem =  input.askStr("Enter the Id of the item to search for.");
-        System.out.println(tracker.findById(idItem).getName() + " is required element.");
+        Item requiredItem = tracker.findById(idItem);
+        if (requiredItem != null) {
+            System.out.println(requiredItem.getName() + " is required element.");
+        } else {
+            System.out.println("Item not found");
+        }
     }
     public static  void findByName(Input input, Tracker tracker) {
         System.out.println("=== Find item by name ====");
@@ -58,7 +63,7 @@ public class StartUI {
             this.showMenu();
             int select = Integer.parseInt(input.askStr("Select: "));
             final boolean[] IS_IT = new boolean[7];
-            for (int i = 0; i < 7; i++) {
+            for (int i = 0; i < IS_IT.length; i++) {
                 IS_IT[i] = (select == i);
             }
             if (IS_IT[0]) {
