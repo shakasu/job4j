@@ -58,8 +58,8 @@ public class StartUI {
             this.showMenu();
             int select = Integer.parseInt(input.askStr("Select: "));
             final boolean[] IS_IT = new boolean[7];
-            for (int i = 0; i < IS_IT.length; i++) {
-                IS_IT[i] = select == i;
+            for (int i = 0; i < 7; i++) {
+                IS_IT[i] = (select == i);
             }
             if (IS_IT[0]) {
                 StartUI.createItem(input, tracker);
