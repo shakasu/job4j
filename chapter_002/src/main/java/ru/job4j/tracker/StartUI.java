@@ -81,7 +81,7 @@ public class StartUI {
                 new DeleteAction(),
                 new FindActionById(),
                 new FindActionsByName(),
-                new ExitTracker()
+                new ExitAction()
         };
         new StartUI().init(input, tracker, actions);
     }

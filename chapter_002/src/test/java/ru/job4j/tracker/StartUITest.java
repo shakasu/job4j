@@ -44,4 +44,14 @@ public class StartUITest {
         StartUI.deleteItem(new StubInput(answers), tracker);
         assertNull(tracker.findById(item.getId()));
     }
+
+    @Test
+    public void whenExit() {
+        StubInput input = new StubInput(
+                new String[] {"0", "1", "2", "3", "4", "5","6"}
+        );
+        StubAction action = new StubAction();
+        new StartUI().init(input, new Tracker(), new UserAction[] { action });
+        assertThat(action.isCall(), is(true));
+    }
 }
