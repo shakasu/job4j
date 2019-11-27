@@ -63,23 +63,28 @@ public class StartUI {
             this.showMenu();
             int select = Integer.parseInt(input.askStr("Select: "));
             final boolean[] IS_IT = new boolean[7];
-            for (int i = 0; i < IS_IT.length; i++) {
-                IS_IT[i] = (select == i);
-            }
+            IS_IT[select] = true;
             if (IS_IT[0]) {
                 StartUI.createItem(input, tracker);
+                IS_IT[select] = false;
             } else if (IS_IT[1]) {
                 StartUI.showAll(input, tracker);
+                IS_IT[select] = false;
             } else if (IS_IT[2]) {
                 StartUI.editItem(input, tracker);
+                IS_IT[select] = false;
             } else if (IS_IT[3]) {
                 StartUI.deleteItem(input, tracker);
+                IS_IT[select] = false;
             } else if (IS_IT[4]) {
                 StartUI.findById(input, tracker);
+                IS_IT[select] = false;
             } else if (IS_IT[5]) {
                 StartUI.findByName(input, tracker);
+                IS_IT[select] = false;
             } else if (IS_IT[6]) {
                 run = false;
+                IS_IT[select] = false;
             }
         }
     }
