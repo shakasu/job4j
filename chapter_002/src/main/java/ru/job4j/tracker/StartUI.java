@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import ru.job4j.tracker.actions.*;
+
 public class StartUI {
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("=== Create a new Item ====");
@@ -66,8 +68,8 @@ public class StartUI {
 
     private void showMenu(UserAction[] actions) {
         System.out.println("Menu.");
-        for (int i = 0; i < actions.length; i++) {
-            System.out.printf("%d.%s%n", i, actions[i].name());
+        for (UserAction action : actions) {
+            System.out.printf(action.info());
         }
     }
 
@@ -76,13 +78,13 @@ public class StartUI {
         Input validate = new ValidateInput(input);
         Tracker tracker = new Tracker();
         UserAction[] actions = {
-                new CreateAction(),
-                new ShowActions(),
-                new EditAction(),
-                new DeleteAction(),
-                new FindActionById(),
-                new FindActionsByName(),
-                new ExitAction()
+                new CreateAction(0, "Add new item."),
+                new ShowActions(1, "Show all items."),
+                new EditAction(2, "Edit item."),
+                new DeleteAction(3, "Delete item."),
+                new FindActionById(4, "Find by Id."),
+                new FindActionByName(5, "Find by name."),
+                new ExitAction(6, "Exit")
         };
         new StartUI().init(validate, tracker, actions);
     }
