@@ -77,7 +77,7 @@ public class StartUI {
         Input input = new ConsoleInput();
         Input validate = new ValidateInput(input);
         Tracker tracker = new Tracker();
-        UserAction[] actions = {
+        BaseAction[] actions = {
                 new CreateAction(0, "Add new item."),
                 new ShowActions(1, "Show all items."),
                 new EditAction(2, "Edit item."),
