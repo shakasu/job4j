@@ -35,7 +35,7 @@ public class TrackerTest {
         //ожидаем массив из экземпляров с одинаковыми именами
         Item[] expected = {test1, test3};
         //генерируем массив проверяемым методом
-        Item[] result = tracker.findByName(test1.getName());
+        Item[] result = tracker.findByName(test1.getName()).toArray(new Item[0]);
         //сравниваем их
         assertThat(result, is(expected));
     }
@@ -53,7 +53,7 @@ public class TrackerTest {
         //ожидаем такой массив
         Item[] expected = {test1, test2, test3};
         //генерируем
-        Item[] result = tracker.findAll();
+        Item[] result = tracker.findAll().toArray(new Item[0]);
         //сравниваем
         assertThat(result, is(expected));
     }
@@ -83,7 +83,7 @@ public class TrackerTest {
         tracker.delete(test2.getId());
         //так как мы ожидаем логическую переменную и уменьшения количества
         // ненулевых элементов, то сравним еще длину массива от метода findAll
-        boolean expected = tracker.findAll().length == 2;
+        boolean expected = tracker.findAll().size() == 2;
         assertThat(result, is(expected));
     }
 }
