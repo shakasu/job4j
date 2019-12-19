@@ -1,11 +1,27 @@
 package ru.job4j.tracker;
 
-public class Item {
+import org.jetbrains.annotations.NotNull;
+
+public class Item implements Comparable<Item> {
     private String id;
     private String name;
+    private int priority;
 
     public Item(String name) {
         this.name = name;
+    }
+
+    public Item(String name, int priority) {
+        this.name = name;
+        this.priority = priority;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
+
+    public void setPriority(int priority) {
+        this.priority = priority;
     }
 
     public String getId() {
@@ -22,6 +38,11 @@ public class Item {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public int compareTo(@NotNull Item another) {
+        return Integer.compare(priority, another.priority);
     }
 }
 
