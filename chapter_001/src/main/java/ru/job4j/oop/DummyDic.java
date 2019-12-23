@@ -8,6 +8,6 @@ public class DummyDic {
 
     public static void main(String[] args) {
         DummyDic dictionary = new DummyDic();
-        System.out.println(dictionary.engToRus("basic"));;
+        System.out.println(dictionary.engToRus("basic"));
     }
 }
