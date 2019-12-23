@@ -14,22 +14,22 @@ public class SingletonTest {
 
     @Test
     public void trackerStaticField() {
-        TrackerSingleStaticField tracker =TrackerSingleStaticField.getInstance();
-        TrackerSingleStaticField newTracker =TrackerSingleStaticField.getInstance();
+        TrackerSingleStaticField tracker = TrackerSingleStaticField.getInstance();
+        TrackerSingleStaticField newTracker = TrackerSingleStaticField.getInstance();
         assertThat(tracker, sameInstance(newTracker));
     }
 
     @Test
     public void trackerStaticFinalField() {
-        TrackerSingleStaticFinalField tracker =TrackerSingleStaticFinalField.getInstance();
-        TrackerSingleStaticFinalField newTracker =TrackerSingleStaticFinalField.getInstance();
+        TrackerSingleStaticFinalField tracker = TrackerSingleStaticFinalField.getInstance();
+        TrackerSingleStaticFinalField newTracker = TrackerSingleStaticFinalField.getInstance();
         assertThat(tracker, sameInstance(newTracker));
     }
 
     @Test
     public void trackerPrivateStaticFinalClass() {
-        TrackerSinglePrivateStaticFinalClass tracker =TrackerSinglePrivateStaticFinalClass.getInstance();
-        TrackerSinglePrivateStaticFinalClass newTracker =TrackerSinglePrivateStaticFinalClass.getInstance();
+        TrackerSinglePrivateStaticFinalClass tracker = TrackerSinglePrivateStaticFinalClass.getInstance();
+        TrackerSinglePrivateStaticFinalClass newTracker = TrackerSinglePrivateStaticFinalClass.getInstance();
         assertThat(tracker, sameInstance(newTracker));
     }
 }

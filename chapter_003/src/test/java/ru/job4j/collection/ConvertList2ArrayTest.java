@@ -16,7 +16,7 @@ public class ConvertList2ArrayTest {
     @Test
     public void when12And3456Then123456() {
         ConvertList2Array list = new ConvertList2Array();
-        List<int[]>input = new ArrayList<>();
+        List<int[]> input = new ArrayList<>();
         input.add(new int[]{1, 2});
         input.add(new int[]{3, 4, 5, 6});
         List<Integer> result = list.convert(input);

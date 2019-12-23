@@ -40,7 +40,7 @@ public class ConvertList2Array {
             }
             System.out.println();
         }
-        List<int[]>input = new ArrayList<>();
+        List<int[]> input = new ArrayList<>();
         input.add(new int[]{1, 2});
         input.add(new int[]{3, 4, 5, 6});
         ConvertList2Array list2 = new ConvertList2Array();
