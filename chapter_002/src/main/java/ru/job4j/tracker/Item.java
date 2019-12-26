@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-
 import org.jetbrains.annotations.NotNull;
 
 public class Item implements Comparable<Item> {
@@ -46,4 +45,3 @@ public class Item implements Comparable<Item> {
         return Integer.compare(priority, another.priority);
     }
 }
-
