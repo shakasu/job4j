@@ -2,6 +2,7 @@ package ru.job4j.bank;
 
 import java.util.*;
 
+
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
 
@@ -28,40 +29,34 @@ public class BankService {
     }
 
     public User findByPassport(String passport) {
-        User rsl = null;
+        User rslUser = null;
         Set<User> keys = users.keySet();
         for (User user : keys) {
             if (user.getPassport().equals(passport)) {
-                rsl = user;
+                rslUser = user;
             }
         }
-        return rsl;
+        return rslUser;
     }
 
     public Account findByRequisite(String passport, String requisite) {
-        Account rsl = null;
+        Account rslAccount = null;
         User user = findByPassport(passport);
         List<Account> list = this.users.get(user);
         for (Account account : list) {
             if (user != null && account.getRequisite().equals(requisite)) {
-                rsl = account;
+                rslAccount = account;
             }
         }
-        return rsl;
+        return rslAccount;
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
-        User srcUser = findByPassport(srcPassport);
-        User destUser = findByPassport(destPassport);
         Account srcAccount = findByRequisite(srcPassport, srcRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
-        if (srcUser != null &&
-                destUser != null &&
-                srcAccount != null &&
-                destAccount != null &&
-                srcAccount.getBalance() >= amount ) {
+        if (srcAccount.getBalance() >= amount) {
             srcAccount.setBalance(srcAccount.getBalance() - amount);
             destAccount.setBalance(destAccount.getBalance() + amount);
             rsl = true;
