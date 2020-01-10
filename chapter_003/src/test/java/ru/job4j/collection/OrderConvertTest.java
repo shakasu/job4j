@@ -1,6 +1,8 @@
 package ru.job4j.collection;
 
 import org.junit.Test;
+import ru.job4j.collection.staf.Order;
+import ru.job4j.collection.staf.OrderConvert;
 
 import java.util.ArrayList;
 import java.util.HashMap;

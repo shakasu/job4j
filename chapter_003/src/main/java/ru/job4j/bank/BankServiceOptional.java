@@ -4,46 +4,43 @@ import java.util.*;
 
 
 public class BankServiceOptional {
+
     private Map<User, List<Account>> users = new HashMap<>();
 
     public void addUser(User user) {
-        if (!findByPassport(user.getPassport()).isPresent()) {
-            users.put(user, new ArrayList<Account>());
-        }
+        users.putIfAbsent(user, new ArrayList<>());
     }
 
     public void addAccount(String passport, Account account) {
-        Account sameAccount = null;
-        List<Account> list = this.users.get(findByPassport(passport).get());
-        for (Account currentAccount : list) {
-            if (account.equals(currentAccount)) {
-                sameAccount = currentAccount;
+        Optional<User> user = findByPassport(passport);
+        if (user.isPresent()) {
+            if (!users.get(user.get()).contains(account)) {
+                users.get(user.get()).add(account);
             }
-             }
-        if (sameAccount == null && findByPassport(passport).isPresent() ) {
-            this.users.get(findByPassport(passport).get()).add(account);
         }
     }
 
     public Optional<User> findByPassport(String passport) {
-        User rslUser = null;
-        Optional<User> result = Optional.ofNullable(rslUser);
+        Optional<User> result = Optional.empty();
         Set<User> keys = users.keySet();
         for (User user : keys) {
             if (user.getPassport().equals(passport)) {
-                rslUser = user;
+                result = Optional.of(user);
+                break;
             }
         }
         return result;
     }
 
     public Optional<Account> findByRequisite(String passport, String requisite) {
-        Account rslAccount = null;
-        Optional<Account> result = Optional.ofNullable(rslAccount);
-        List<Account> list = this.users.get(findByPassport(passport).get());
-        for (Account account : list) {
-            if (account.getRequisite().equals(requisite)) {
-                rslAccount = account;
+        Optional<Account> result = Optional.empty();
+        Optional<User> user = findByPassport(passport);
+        if (user.isPresent()) {
+            List<Account> list = users.get(user.get());
+            for (Account account : list) {
+                if (account.getRequisite().equals(requisite)) {
+                    result = Optional.of(account);
+                }
             }
         }
         return result;

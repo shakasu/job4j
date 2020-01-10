@@ -2,6 +2,7 @@ package ru.job4j.collection;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import ru.job4j.collection.staf.ConvertList2Array;
 
 import java.util.ArrayList;
 import java.util.Arrays;
