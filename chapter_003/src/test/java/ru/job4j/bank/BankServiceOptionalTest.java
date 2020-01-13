@@ -3,6 +3,7 @@ package ru.job4j.bank;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 public class BankServiceOptionalTest {
@@ -12,9 +13,16 @@ public class BankServiceOptionalTest {
         User user = new User("12051997", "Karen S");
         BankServiceOptional bank = new BankServiceOptional();
         bank.addUser(user);
-        if (bank.findByPassport("12051997").isPresent()) {
-            assertThat(bank.findByPassport("12051997").get(), is(user));
-        }
+        assertThat(bank.findByPassport("12051997").get(), is(user));
+    }
+
+    @Test
+    public void deleteUser() {
+        User user = new User("12051997", "Karen S");
+        BankServiceOptional bank = new BankServiceOptional();
+        bank.addUser(user);
+        bank.deleteUser(user.getPassport());
+        assertFalse(bank.findByPassport("12051997").isPresent());
     }
 
     @Test
@@ -24,9 +32,7 @@ public class BankServiceOptionalTest {
         BankServiceOptional bank = new BankServiceOptional();
         bank.addUser(user);
         bank.addAccount(user.getPassport(), new Account("qwe123", 150000));
-        if (bank.findByRequisite("12051997", "qwe123").isPresent()) {
-            assertThat(bank.findByRequisite("12051997", "qwe123").get().getBalance(), is(expected));
-        }
+        assertThat(bank.findByRequisite("12051997", "qwe123").get().getBalance(), is(expected));
     }
 
     @Test

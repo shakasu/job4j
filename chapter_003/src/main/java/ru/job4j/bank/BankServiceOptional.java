@@ -11,6 +11,12 @@ public class BankServiceOptional {
         users.putIfAbsent(user, new ArrayList<>());
     }
 
+    public void deleteUser(String passport) {
+        if (findByPassport(passport).isPresent()) {
+            this.users.remove(findByPassport(passport).get());
+        }
+    }
+
     public void addAccount(String passport, Account account) {
         Optional<User> user = findByPassport(passport);
         if (user.isPresent()) {
@@ -37,11 +43,8 @@ public class BankServiceOptional {
         Optional<User> user = findByPassport(passport);
         if (user.isPresent()) {
             List<Account> list = users.get(user.get());
-            for (Account account : list) {
-                if (account.getRequisite().equals(requisite)) {
-                    result = Optional.of(account);
-                }
-            }
+            int index = list.indexOf(new Account(requisite, -1));
+            result = Optional.of(list.get(index));
         }
         return result;
     }
