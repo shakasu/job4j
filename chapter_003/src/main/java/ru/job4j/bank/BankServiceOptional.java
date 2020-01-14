@@ -12,9 +12,7 @@ public class BankServiceOptional {
     }
 
     public void deleteUser(String passport) {
-        if (findByPassport(passport).isPresent()) {
-            this.users.remove(findByPassport(passport).get());
-        }
+        this.users.remove(findByPassport(passport).get());
     }
 
     public void addAccount(String passport, Account account) {
