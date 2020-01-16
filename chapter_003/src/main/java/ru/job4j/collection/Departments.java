@@ -10,15 +10,21 @@ public class Departments {
         HashSet<String> tmp = new HashSet<>();
         for (String value : deps) {
             String start = "";
-            String rsl = null;
-            for (String el : value.split("/")) {
+            for (int i = 0; i < value.split("/").length; i++) {
                 if (tmp.isEmpty()) {
-                    rsl = el;
+                    tmp.add(value.split("/")[i]);
                 } else {
-                    rsl = rsl + "/" + el;
+                    tmp.add(value.split("/")[i - 1] + start + "/" + value.split("/")[i]);
                 }
-                tmp.add(rsl);
             }
+            /*for (String el : value.split("/")) {
+                if (tmp.isEmpty()) {
+                    tmp.add(el);
+                } else {
+                    tmp.add(el + start + "/" + el);
+                }
+                // tmp.add start + "/" + el
+            }*/
         }
         return new ArrayList<>(tmp);
     }
