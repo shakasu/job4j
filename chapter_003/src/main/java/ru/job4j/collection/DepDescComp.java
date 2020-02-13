@@ -25,7 +25,10 @@ public class DepDescComp implements Comparator<String> {
         Integer leftStrSplitLength = leftStrSplit.length;
         Integer rightStrSplitLength = rightStrSplit.length;
         for (int index = 0; index < shorterSize; index++) {
-            int compareInt = leftStrSplit[index].compareTo(rightStrSplit[index]);
+            char[] leftChar = leftStrSplit[index].toCharArray();
+            char[] rightChar = rightStrSplit[index].toCharArray();
+            int lastCharIndex = leftChar.length - 1;
+            int compareInt = Character.compare(leftChar[lastCharIndex], rightChar[lastCharIndex]);
             if (index == 0 && compareInt != 0) {
                 result = -compareInt;
                 break;
