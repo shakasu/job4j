@@ -49,4 +49,13 @@ public class DepartmentsTest {
         List<String> result = input;
         assertThat(result, is(expect));
     }
+
+    @Test
+    public void sortDescSameSizeTwo() {
+        List<String> input = Arrays.asList("k1", "k2", "k3");
+        List<String> expect = Arrays.asList("k3", "k2", "k1");
+        Departments.sortDesc(input);
+        List<String> result = input;
+        assertThat(result, is(expect));
+    }
 }
