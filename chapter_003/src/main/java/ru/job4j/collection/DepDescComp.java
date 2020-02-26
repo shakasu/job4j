@@ -7,10 +7,9 @@ public class DepDescComp implements Comparator<String> {
     public int compare(String leftStr, String rightStr) {
         int result = 0;
         int minSize = Math.min(leftStr.length(), rightStr.length());
-        int firstDigit = 1;
-        for (int i = firstDigit; i < minSize; i++) {
-            if (leftStr.charAt(firstDigit) > rightStr.charAt(firstDigit)) {
-                result = -Character.compare(leftStr.charAt(firstDigit), rightStr.charAt(firstDigit));
+        for (int i = 1; i < minSize; i++) {
+            if (leftStr.charAt(1) > rightStr.charAt(1)) {
+                result = -Character.compare(leftStr.charAt(1), rightStr.charAt(1));
                 break;
             }
             result = Character.compare(leftStr.charAt(i), rightStr.charAt(i));
