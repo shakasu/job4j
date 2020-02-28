@@ -9,7 +9,7 @@ public class DepDescComp implements Comparator<String> {
         int minSize = Math.min(leftStr.length(), rightStr.length());
         for (int i = 1; i < minSize; i++) {
             if (leftStr.charAt(1) > rightStr.charAt(1)) {
-                result = -Character.compare(leftStr.charAt(1), rightStr.charAt(1));
+                result = -Character.compare(leftStr.charAt(i), rightStr.charAt(i));
                 break;
             }
             result = Character.compare(leftStr.charAt(i), rightStr.charAt(i));
