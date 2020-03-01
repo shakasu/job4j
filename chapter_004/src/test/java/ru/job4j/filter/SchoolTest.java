@@ -3,6 +3,7 @@ package ru.job4j.filter;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -32,5 +33,25 @@ public class SchoolTest {
         School school = new School();
         List<Student> actual = school.collect(students, student -> student.getScore() >= 70);
         assertThat(actual.get(0).getName(), is("zxc"));
+    }
+
+    @Test
+    public void convertListToMapTest() {
+        School school = new School();
+        Student student1 = new Student(12, "petrov");
+        Student student2 = new Student(52, "ivanov");
+        Student student3 = new Student(77, "sidorov");
+        List<Student> input = List.of(
+                student1,
+                student2,
+                student3
+        );
+        Map<String, Student> expected = Map.of(
+                "petrov", student1,
+                "ivanov",student2,
+                "sidorov", student3
+        );
+        Map<String, Student> actual = school.convertListToMap(input);
+        assertThat(actual, is(expected));
     }
 }
