@@ -1,5 +1,7 @@
 package ru.job4j.сonversion;
 
+import java.util.Objects;
+
 public class Address {
     private String city;
     private String street;
@@ -31,26 +33,17 @@ public class Address {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int rsl = 1;
-        rsl = prime * rsl + ((city != null) ? 0 : city.hashCode());
-        rsl = prime * rsl + ((street != null) ? 0: street.hashCode());
-        rsl = prime * rsl + apartment;
-        rsl = prime * rsl + home;
-        return rsl;
+        return Objects.hash(city, street, home, apartment);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (obj == this) {
-            return true;
-        }
-        if (obj == null || obj.getClass() != this.getClass()) {
-            return false;
-        }
-        Address address = (Address) obj;
-        return home == address.home && apartment == address.apartment &&
-                (city == address.city || (city != null && city.equals(address.getCity()))) &&
-                (street == address.street || (street != null && street.equals(address.getStreet())));
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Address address = (Address) o;
+        return home == address.home &&
+                apartment == address.apartment &&
+                Objects.equals(city, address.city) &&
+                Objects.equals(street, address.street);
     }
 }

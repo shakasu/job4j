@@ -12,13 +12,11 @@ public class Profiles {
         return rls;
     }
 
-    public List<Address> uniqueSortByCity(List<Profile> profiles) {
-        List<Address> tmp;
-        tmp = profiles.stream().map(
-                Profile::getAddress
-        ).collect(Collectors.toList());
-        tmp.sort(new AddressComp());
-        List<Address> rls = tmp.stream().distinct().collect(Collectors.toList());
-        return rls;
+    public List<Address> uniqueSortByCity(List<Profile> profileList) {
+        List<Address> rls;
+        Profiles profiles = new Profiles();
+        rls = profiles.collect(profileList);
+        rls.sort(new AddressComp());
+        return rls.stream().distinct().collect(Collectors.toList());
     }
 }
