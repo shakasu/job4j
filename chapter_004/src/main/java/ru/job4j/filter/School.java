@@ -13,7 +13,7 @@ public class School {
         return rls;
     }
 
-    public Map<String, Student> convertListToMap(List<Student> students){
+    public Map<String, Student> convertListToMap(List<Student> students) {
         Map<String, Student> rls = null;
         rls = students.stream().distinct().collect(
                 Collectors.toMap(

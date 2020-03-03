@@ -48,7 +48,7 @@ public class SchoolTest {
         );
         Map<String, Student> expected = Map.of(
                 "petrov", student1,
-                "ivanov",student2,
+                "ivanov", student2,
                 "sidorov", student3
         );
         Map<String, Student> actual = school.convertListToMap(input);
