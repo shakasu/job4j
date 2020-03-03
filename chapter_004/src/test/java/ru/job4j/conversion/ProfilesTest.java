@@ -13,6 +13,7 @@ import static org.junit.Assert.assertThat;
 public class ProfilesTest {
     @Test
     public void collectTest() {
+
         Address address1 = new Address("Moscow", "lelina", 23, 5);
         Address address2 = new Address("SPb", "pushkina", 233, 51);
         Profile profile1 = new Profile(address1);
