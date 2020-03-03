@@ -1,4 +1,4 @@
-package ru.job4j.convertMatrixToList;
+package ru.job4j.converter;
 
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class ConverterTest {
         };
         List<Integer> expected = List.of(1, 2, 3, 4, 5, 6);
         Converter converter = new Converter();
-        List<Integer> actual= converter.convert(input);
+        List<Integer> actual = converter.convert(input);
         assertThat(actual, is(expected));
     }
 
@@ -29,7 +29,7 @@ public class ConverterTest {
         );
         List<Integer> expected = List.of(1, 2, 3, 4);
         Converter converter = new Converter();
-        List<Integer> actual= converter.convert(matrix);
+        List<Integer> actual = converter.convert(matrix);
         assertThat(actual, is(expected));
     }
 }
