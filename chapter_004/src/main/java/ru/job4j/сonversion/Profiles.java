@@ -11,7 +11,11 @@ public class Profiles {
     }
 
     public List<Address> uniqueSortByCity(List<Profile> profileList) {
-        Profiles profiles = new Profiles();
-        return profiles.collect(profileList).stream().distinct().sorted(new AddressComp()).collect(Collectors.toList());
+        return new Profiles()
+                .collect(profileList)
+                .stream()
+                .sorted(new AddressComp())
+                .distinct()
+                .collect(Collectors.toList());
     }
 }
