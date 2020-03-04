@@ -2,7 +2,6 @@ package ru.job4j.bank;
 
 import java.util.*;
 
-
 public class BankServiceOptional {
 
     private Map<User, List<Account>> users = new HashMap<>();
@@ -12,42 +11,29 @@ public class BankServiceOptional {
     }
 
     public void deleteUser(String passport) {
-        Optional<User> user = findByPassport(passport);
-        if (user.isPresent()) {
-            this.users.remove(user.get());
-        }
-    }
-
-    public void addAccount(String passport, Account account) {
-        Optional<User> user = findByPassport(passport);
-        if (user.isPresent()) {
-            if (!users.get(user.get()).contains(account)) {
-                users.get(user.get()).add(account);
-            }
-        }
+        findByPassport(passport).ifPresent(value -> this.users.remove(value));
     }
 
     public Optional<User> findByPassport(String passport) {
-        Optional<User> result = Optional.empty();
-        Set<User> keys = users.keySet();
-        for (User user : keys) {
-            if (user.getPassport().equals(passport)) {
-                result = Optional.of(user);
-                break;
-            }
-        }
-        return result;
+        return users.keySet().stream().filter(
+                e -> e.getPassport().equals(passport)
+        ).findFirst();
+    }
+
+    public void addAccount(String passport, Account account) {
+        users.keySet().stream()
+                .filter(e -> e.getPassport().equals(passport))
+                .filter(e -> !users.get(e).contains(account))
+                .findFirst()
+                .ifPresent(e -> users.get(e).add(account));
     }
 
     public Optional<Account> findByRequisite(String passport, String requisite) {
-        Optional<Account> result = Optional.empty();
-        Optional<User> user = findByPassport(passport);
-        if (user.isPresent()) {
-            List<Account> list = users.get(user.get());
-            int index = list.indexOf(new Account(requisite, -1));
-            result = Optional.of(list.get(index));
-        }
-        return result;
+        return users.keySet().stream()
+                .filter(e -> e.getPassport().equals(passport))
+                .flatMap(e -> users.get(e).stream())
+                .filter(e -> e.getRequisite().equals(requisite))
+                .findFirst();
     }
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
