@@ -21,16 +21,14 @@ public class BankServiceOptional {
     }
 
     public void addAccount(String passport, Account account) {
-        users.keySet().stream()
-                .filter(e -> e.getPassport().equals(passport))
+        findByPassport(passport)
                 .filter(e -> !users.get(e).contains(account))
-                .findFirst()
                 .ifPresent(e -> users.get(e).add(account));
     }
 
     public Optional<Account> findByRequisite(String passport, String requisite) {
-        return users.keySet().stream()
-                .filter(e -> e.getPassport().equals(passport))
+        return findByPassport(passport)
+                .stream()
                 .flatMap(e -> users.get(e).stream())
                 .filter(e -> e.getRequisite().equals(requisite))
                 .findFirst();
@@ -38,14 +36,10 @@ public class BankServiceOptional {
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
-        boolean rsl = false;
         Optional<Account> srcAccount = findByRequisite(srcPassport, srcRequisite);
         Optional<Account> destAccount = findByRequisite(destPassport, destRequisite);
-        if (srcAccount.get().getBalance() >= amount) {
-            srcAccount.get().setBalance(srcAccount.get().getBalance() - amount);
-            destAccount.get().setBalance(destAccount.get().getBalance() + amount);
-            rsl = true;
-        }
-        return rsl;
+        srcAccount.ifPresent(e -> e.setBalance(e.getBalance() - amount));
+        destAccount.ifPresent(e -> e.setBalance(e.getBalance() + amount));
+        return srcAccount.get().getBalance() >= amount;
     }
 }
