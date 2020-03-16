@@ -9,17 +9,28 @@ import static org.junit.Assert.assertThat;
 public class DepartmentsTest {
     @Test
     public void test() {
-        List<String> input = Arrays.asList("k2/sk1", "k1/sk1", "k1/sk2");
-        List<String> expect = Arrays.asList("k2/sk1", "k1/sk2", "k1/sk1");
-        Departments.sortDesc(input);
-        List<String> result = input;
-        assertThat(result, is(expect));
-    }
-
-    @Test
-    public void test2() {
-        List<String> input = Arrays.asList("k1/sk1/ssk1", "k1/sk1/ssk2", "k1/sk1/ssk3");
-        List<String> expect = Arrays.asList("k1/sk1/ssk3", "k1/sk1/ssk2", "k1/sk1/ssk1");
+        List<String> input = Arrays.asList(
+                "K2/SK1",
+                "K1",
+                "K1/SK1",
+                "K1/SK1/SSK1",
+                "K1/SK1/SSK2",
+                "K1/SK2",
+                "K2/SK1/SSK1",
+                "K2/SK1/SSK2",
+                "K2"
+        );
+        List<String> expect = Arrays.asList(
+                "K2",
+                "K2/SK1",
+                "K2/SK1/SSK1",
+                "K2/SK1/SSK2",
+                "K1",
+                "K1/SK1",
+                "K1/SK1/SSK1",
+                "K1/SK1/SSK2",
+                "K1/SK2"
+        );
         Departments.sortDesc(input);
         List<String> result = input;
         assertThat(result, is(expect));
