@@ -12,7 +12,7 @@ public class DeleteAction extends BaseAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker, Consumer<String > output) {
+    public boolean execute(Input input, Tracker tracker, Consumer<String> output) {
         String idItem =  input.askStr("Enter the Id of the item to delete.");
         if (tracker.delete(idItem)) {
             output.accept(String.format("Item deleted successfully%nNow item with Id %s not exist%n", idItem));
