@@ -14,10 +14,10 @@ public class School {
     }
 
     public Map<String, Student> convertListToMap(List<Student> students) {
-        Map<String, Student> rls = null;
+        Map<String, Student> rls;
         rls = students.stream().distinct().collect(
                 Collectors.toMap(
-                        student -> student.getName(),
+                        Student::getName,
                         student -> student
                 )
         );
