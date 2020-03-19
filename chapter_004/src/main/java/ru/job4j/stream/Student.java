@@ -32,7 +32,6 @@ public class Student implements Comparable<Student> {
                 .flatMap(Stream::ofNullable)
                 .sorted((o1, o2) -> -o1.compareTo(o2))
                 .takeWhile(v -> v.scope > bound)
-                .sorted()
                 .collect(Collectors.toList());
     }
 }
