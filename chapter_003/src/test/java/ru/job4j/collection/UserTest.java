@@ -13,9 +13,12 @@ import static org.junit.Assert.*;
 public class UserTest {
     @Test
     public void whenAsc() {
-        Set<User> users = new TreeSet<>();
-        users.add(new User("Petr", 32));
-        users.add(new User("Ivan", 31));
+        Set<User> users = new TreeSet<>(
+                Set.of(
+                        new User("Petr", 32),
+                        new User("Ivan", 31)
+                )
+        );
         Iterator<User> it = users.iterator();
         assertThat(it.next(), is(new User("Ivan", 31)));
         assertThat(it.next(), is(new User("Petr", 32)));
@@ -31,70 +34,83 @@ public class UserTest {
     }
 
     @Test
-    public void whenComporatorByNameIncrease() {
-        List<User> expected = new ArrayList<>();
-        List<User> result = new ArrayList<>();
-        User user1 = new User("Anton", 1);
-        User user2 = new User("Boris", 2);
-        User user3 = new User("Gleb", 3);
-        expected.add(user1);
-        expected.add(user2);
-        expected.add(user3);
-        result.add(user2);
-        result.add(user3);
-        result.add(user1);
-        Collections.sort(result, new UserInByName());
+    public void whenComparatorByNameIncrease() {
+        List<User> expected = new ArrayList<>(
+                List.of(
+                        new User("Anton", 1),
+                        new User("Boris", 2),
+                        new User("Gleb", 3)
+                )
+        );
+        List<User> result = new ArrayList<>(
+                List.of(
+                        new User("Boris", 2),
+                        new User("Gleb", 3),
+                        new User("Anton", 1)
+                )
+        );
+
+        result.sort(new UserInByName());
         assertThat(result, is(expected));
     }
 
     @Test
-    public void whenComporatorByNameDecrease() {
-        List<User> expected = new ArrayList<>();
-        List<User> result = new ArrayList<>();
-        User user1 = new User("Anton", 1);
-        User user2 = new User("Boris", 2);
-        User user3 = new User("Gleb", 3);
-        expected.add(user3);
-        expected.add(user2);
-        expected.add(user1);
-        result.add(user2);
-        result.add(user3);
-        result.add(user1);
-        Collections.sort(result, new UserDeByName());
+    public void whenComparatorByNameDecrease() {
+        List<User> expected = new ArrayList<>(
+                List.of(
+                        new User("Gleb", 3),
+                        new User("Boris", 2),
+                        new User("Anton", 1)
+                )
+        );
+        List<User> result = new ArrayList<>(
+                List.of(
+                        new User("Boris", 2),
+                        new User("Gleb", 3),
+                        new User("Anton", 1)
+                )
+        );
+        result.sort(new UserDeByName());
         assertThat(result, is(expected));
     }
 
     @Test
-    public void whenComporatorByPriorityIncrease() {
-        List<User> expected = new ArrayList<>();
-        List<User> result = new ArrayList<>();
-        User user1 = new User("Anton", 1);
-        User user2 = new User("Boris", 2);
-        User user3 = new User("Gleb", 3);
-        expected.add(user1);
-        expected.add(user2);
-        expected.add(user3);
-        result.add(user2);
-        result.add(user3);
-        result.add(user1);
-        Collections.sort(result, new UserInByPriority());
+    public void whenComparatorByPriorityIncrease() {
+        List<User> expected = new ArrayList<>(
+                List.of(
+                        new User("Anton", 1),
+                        new User("Boris", 2),
+                        new User("Gleb", 3)
+                )
+        );
+        List<User> result = new ArrayList<>(
+                List.of(
+                        new User("Boris", 2),
+                        new User("Gleb", 3),
+                        new User("Anton", 1)
+                )
+        );
+        result.sort(new UserInByPriority());
         assertThat(result, is(expected));
     }
 
     @Test
-    public void whenComporatorByPriorityDecrease() {
-        List<User> expected = new ArrayList<>();
-        List<User> result = new ArrayList<>();
-        User user1 = new User("Anton", 1);
-        User user2 = new User("Boris", 2);
-        User user3 = new User("Gleb", 3);
-        expected.add(user3);
-        expected.add(user2);
-        expected.add(user1);
-        result.add(user2);
-        result.add(user3);
-        result.add(user1);
-        Collections.sort(result, new UserDeByPriority());
+    public void whenComparatorByPriorityDecrease() {
+        List<User> expected = new ArrayList<>(
+                List.of(
+                        new User("Gleb", 3),
+                        new User("Boris", 2),
+                        new User("Anton", 1)
+                )
+        );
+        List<User> result = new ArrayList<>(
+                List.of(
+                        new User("Boris", 2),
+                        new User("Gleb", 3),
+                        new User("Anton", 1)
+                )
+        );
+        result.sort(new UserDeByPriority());
         assertThat(result, is(expected));
     }
 
