@@ -1,9 +1,6 @@
 package ru.job4j.conversion;
 
 import org.junit.Test;
-import ru.job4j.сonversion.Address;
-import ru.job4j.сonversion.Profile;
-import ru.job4j.сonversion.Profiles;
 
 import java.util.List;
 

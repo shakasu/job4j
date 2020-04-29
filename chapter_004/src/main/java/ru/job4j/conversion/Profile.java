@@ -1,4 +1,4 @@
-package ru.job4j.сonversion;
+package ru.job4j.conversion;
 
 public class Profile {
     private Address address;

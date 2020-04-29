@@ -7,7 +7,7 @@ public class StartUI {
     private final Tracker tracker;
     private final Consumer<String> output;
 
-    public StartUI(Input input, Tracker tracker, Consumer output) {
+    public StartUI(Input input, Tracker tracker, Consumer<String> output) {
         this.input = input;
         this.tracker = tracker;
         this.output = output;

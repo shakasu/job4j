@@ -1,4 +1,4 @@
-package ru.job4j.сonversion;
+package ru.job4j.conversion;
 
 import java.util.List;
 import java.util.stream.Collectors;
